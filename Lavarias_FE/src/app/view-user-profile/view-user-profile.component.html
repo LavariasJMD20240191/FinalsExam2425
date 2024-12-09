@@ -1,0 +1,14 @@
+<p>view-user-profile works!</p>
+<div class="profile-container">
+  <h2>User Profile</h2>
+
+  <div *ngIf="userData">
+    <p><strong>Name:</strong> {{ userData.name }}</p>
+    <p><strong>Email:</strong> {{ userData.email }}</p>
+    <p><strong>Phone:</strong> {{ userData.phone }}</p>
+  </div>
+
+  <div *ngIf="!userData">
+    <p>No user data available. Please register first.</p>
+  </div>
+</div>
