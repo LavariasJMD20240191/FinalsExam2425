@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserDataService } from '../user.service';
 
 @Component({
   selector: 'app-view-user-profile',
-  standalone: true,
-  imports: [],
   templateUrl: './view-user-profile.component.html',
   styleUrl: './view-user-profile.component.css'
 })
 export class ViewUserProfileComponent implements OnInit {
   userData: any;
+  userService: any;
 
-  constructor(private userService: UserService) {}
+  constructor(private userDataService: UserDataService) {}
 
-  ngOnInit(): void {
-    this.userData = this.userService.getUserData();
+  ngOnInit() {
+    this.userData = this.userDataService.getUserData();
+  }
+
+  deleteUserData() {
+    this.userDataService.clearUserData();
+    this.userData = null;
   }
 }

@@ -1,14 +1,13 @@
-<p>view-user-profile works!</p>
-<div class="profile-container">
-  <h2>User Profile</h2>
-
-  <div *ngIf="userData">
-    <p><strong>Name:</strong> {{ userData.name }}</p>
-    <p><strong>Email:</strong> {{ userData.email }}</p>
-    <p><strong>Phone:</strong> {{ userData.phone }}</p>
-  </div>
-
-  <div *ngIf="!userData">
-    <p>No user data available. Please register first.</p>
-  </div>
+<h2>User Profile</h2>
+<div *ngIf="userData; else noData">
+  <p><strong>Name:</strong> {{ userData.name }}</p>
+  <p><strong>Email:</strong> {{ userData.email }}</p>
+  <p><strong>Courses:</strong></p>
+  <ul>
+    <li *ngFor="let course of userData.courses">{{ course }}</li>
+  </ul>
+  <button (click)="deleteUserData()">Delete Profile</button>
 </div>
+<ng-template #noData>
+  <p>No user data available. Please register first.</p>
+</ng-template>

@@ -1,0 +1,70 @@
+<p>class-record works!</p>
+<h2>Class Record</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Activity Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of paginatedStudents">
+      <td>{{ student.id }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.activityType }}</td>
+      <td>
+        <button (click)="viewStudent(student)">View</button>
+        <button (click)="editStudent(student)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination controls -->
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+<!-- Modal dialog for viewing student details -->
+<div *ngIf="showViewModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h3>Student Details</h3>
+    <p><strong>ID:</strong> {{ selectedStudent?.id }}</p>
+    <p><strong>Name:</strong> {{ selectedStudent?.name }}</p>
+    <p><strong>Activity Type:</strong> {{ selectedStudent?.activityType }}</p>
+    <p><strong>Other Details:</strong> {{ selectedStudent?.details }}</p>
+  </div>
+</div>
+
+<!-- Modal dialog for editing student details -->
+<div *ngIf="showEditModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h3>Edit Student Details</h3>
+    <form (ngSubmit)="saveStudent()">
+      <label>
+        ID:
+        <input [(ngModel)]="editStudentData.id" name="id" required />
+      </label>
+      <label>
+        Name:
+        <input [(ngModel)]="editStudentData.name" name="name" required />
+      </label>
+      <label>
+        Activity Type:
+        <input [(ngModel)]="editStudentData.activityType" name="activityType" required />
+      </label>
+      <label>
+        Details:
+        <textarea [(ngModel)]="editStudentData.details" name="details" required></textarea>
+      </label>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

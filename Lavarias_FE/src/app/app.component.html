@@ -6,13 +6,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/register">Register Here</a>
-        <a class="nav-link" href="/user-profile">Profile</a>
-        <a class="nav-link disabled" aria-disabled="true">Home</a>
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" routerLink="/registration" routerLinkActive="active-link">Register</a>
+        <a class="nav-link" routerLink="/user-profile" routerLinkActive="active-link">User profile</a>
+        <a class="nav-link" routerLink="/class-record" routerLinkActive="active-link">Records</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </div>
     </div>
   </div>
 </nav>
+<router-outlet></router-outlet>
 
-[routerLink]="['/routePath']" routerLinkActive="router-link-active" 
+
