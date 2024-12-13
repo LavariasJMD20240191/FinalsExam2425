@@ -1,0 +1,21 @@
+<p>consultation works!</p>
+<h2>Consultation Form</h2>
+
+<div class="consultation-form">
+  <form (ngSubmit)="submitConsultation()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="consultationData.name" name="name" required placeholder="Enter your name" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="consultationData.email" name="email" required placeholder="Enter your email" />
+
+    <label for="query">Query:</label>
+    <textarea id="query" [(ngModel)]="consultationData.query" name="query" rows="5" required placeholder="Enter your query"></textarea>
+
+    <button type="submit">Set Appointment</button>
+  </form>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>
