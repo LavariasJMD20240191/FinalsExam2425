@@ -21,7 +21,7 @@ export class ClassRecordComponent implements OnInit{
 
   showViewModal = false;
   showEditModal = false;
-  selectedStudent: any = null;
+  selectedStudent: any ;
   editStudentData: any;
 
   ngOnInit(){
